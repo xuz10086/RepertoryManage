@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background1"
+    tools:context=".activity.ProductQueryActivity"
+    android:orientation="vertical">
+
+    <com.indusfo.repertorymanage.mlayout.TopBar
+        android:id="@+id/product_query_activity_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorTopBar"
+        app:leftBackground="@drawable/title_shape_back"
+        app:titleText="@string/product_query"
+        app:titleTextColor="@color/white"
+        app:titleTextSize="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/product_model"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:hint="@string/product_model"
+            android:gravity="center"
+            android:theme="@style/MyEditText"/>
+        <Button
+            android:id="@+id/button_clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="@string/clear"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_shape_1"
+            />
+    </LinearLayout>
+
+    <com.roamer.slidelistview.SlideListView
+        xmlns:slide="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/product_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:cacheColorHint="@color/spinner"
+        android:dividerHeight="5dp"
+        slide:slideAnimationTime="200"
+        slide:slideMode="right"
+        slide:slideRightAction="scroll"/>
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <com.roamer.slidelistview.SlideListView
+        xmlns:slide="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listview_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background1"
+        android:divider="@color/background1"
+        slide:slideAnimationTime="200"
+        slide:slideMode="right"
+        slide:slideRightAction="scroll"/>
+
+    <!-- 九宫格
+    <GridView-->
+        <!--android:id="@+id/hui_zong_grid"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:columnWidth="100dp"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:numColumns="2"-->
+        <!--android:stretchMode="columnWidth" />-->
+</RelativeLayout>
