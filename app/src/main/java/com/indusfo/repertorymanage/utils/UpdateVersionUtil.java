@@ -154,7 +154,7 @@ public class UpdateVersionUtil {
      */
     public static void showDialog(final Context context,final VersionInfo versionInfo){
         final Dialog dialog = new AlertDialog.Builder(context).create();
-        final File file = new File(SDCardUtils.getRootDirectory()+"/updateVersion/" + versionInfo.getAppName());
+        final File file = new File(SDCardUtils.getRootDirectory()+"/downloadApk/" + versionInfo.getAppName());
 //        final File file = new File("/data/data/com.indusfo.spc/cache/downloadApk/"+ versionInfo.getAppName());
         dialog.setCancelable(true);// 可以用“返回键”取消
         dialog.setCanceledOnTouchOutside(false);
