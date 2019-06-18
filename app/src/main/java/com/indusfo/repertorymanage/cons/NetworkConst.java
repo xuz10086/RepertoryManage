@@ -26,9 +26,6 @@ public class NetworkConst {
     // 获取天平的TCP连接信息
     public static final String GET_TCP_PARAMS_URL = BASE_URL + "/detection/Instrument/queryInstrument";
 
-    // App在线升级
-    public static final String UPDATA_VERSION_REQ_URL = BASE_URL + "/pda/scanApp/queryScanApp";
-
     // 入库新增
     public static final String INSERT_PUT_IN_URL = BASE_URL + "/pda/proStore/insertProStore";
     // 扫描查询
@@ -43,4 +40,7 @@ public class NetworkConst {
     public static final String QUERY_BY_TIAO_MA2 = BASE_URL + "/pda/proStoreCheck/selectProStoreCheck";
     // 新增盘点明细
     public static final String INSERT_TAKE_STOCK_URL = BASE_URL + "/pda/proStoreCheck/insertProStoreCheck";
+
+    // App在线升级
+    public static final String UPDATA_VERSION_REQ_URL = BASE_URL + "/pda/scanApp/queryScanApp2";
 }

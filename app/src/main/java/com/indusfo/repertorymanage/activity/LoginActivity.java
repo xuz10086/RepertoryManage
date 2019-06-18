@@ -17,10 +17,15 @@ import android.widget.TextView;
 import com.indusfo.repertorymanage.R;
 import com.indusfo.repertorymanage.bean.RResult;
 import com.indusfo.repertorymanage.bean.User;
+import com.indusfo.repertorymanage.bean.VersionInfo;
 import com.indusfo.repertorymanage.cons.IdiyMessage;
+import com.indusfo.repertorymanage.cons.UpdateStatus;
 import com.indusfo.repertorymanage.controller.LoginController;
 import com.indusfo.repertorymanage.utils.ActivityUtils;
 import com.indusfo.repertorymanage.utils.Md5Util;
+import com.indusfo.repertorymanage.utils.SDCardUtils;
+import com.indusfo.repertorymanage.utils.ToastUtils;
+import com.indusfo.repertorymanage.utils.UpdateVersionUtil;
 
 public class LoginActivity extends BaseActivity {
 
@@ -147,8 +152,8 @@ public class LoginActivity extends BaseActivity {
         initUI();
 
         // 如果存在安装包，则删除
-//        String filePath = getCacheDir() + "/downloadApk/app-release.apk";
-//        SDCardUtils.removeFile(filePath);
+        String filePath = SDCardUtils.getRootDirectory()+"/downloadApk/app-release.apk";
+        SDCardUtils.removeFile(filePath);
 
     }
 
@@ -205,6 +210,62 @@ public class LoginActivity extends BaseActivity {
         });
 
         mController.sendAsynMessage(IdiyMessage.GET_USER_FROM_DB, 0);
+
+        // 进入登陆界面，校验是否有新版本
+        UpdateVersionUtil.checkVersion(LoginActivity.this, new UpdateVersionUtil.UpdateListener() {
+
+            @Override
+            public void onUpdateReturned(int updateStatus, VersionInfo versionInfo) {
+                //判断回调过来的版本检测状态
+                switch (updateStatus) {
+                    case UpdateStatus.YES:
+                        //弹出更新提示
+                        UpdateVersionUtil.showDialog(LoginActivity.this, versionInfo);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        // 更新App
+        updateApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                AppUtils.verifyStoragePermissions(LoginActivity.this);
+                //访问服务器 试检测是否有新版本发布
+                UpdateVersionUtil.checkVersion(LoginActivity.this, new UpdateVersionUtil.UpdateListener() {
+
+                    @Override
+                    public void onUpdateReturned(int updateStatus, VersionInfo versionInfo) {
+                        //判断回调过来的版本检测状态
+                        switch (updateStatus) {
+                            case UpdateStatus.YES:
+                                //弹出更新提示
+                                UpdateVersionUtil.showDialog(LoginActivity.this, versionInfo);
+                                break;
+                            case UpdateStatus.NO:
+                                //没有新版本
+                                ToastUtils.showToast(getApplicationContext(), "已经是最新版本了!");
+                                break;
+                            case UpdateStatus.NOWIFI:
+                                //当前是非wifi网络
+                                ToastUtils.showToast(getApplicationContext(), "只有在wifi下更新！");
+                                break;
+                            case UpdateStatus.ERROR:
+                                //检测失败
+                                ToastUtils.showToast(getApplicationContext(), "检测失败，请稍后重试！");
+                                break;
+                            case UpdateStatus.TIMEOUT:
+                                //链接超时
+                                ToastUtils.showToast(getApplicationContext(), "链接超时，请检查网络设置!");
+                                break;
+                        }
+                    }
+
+                });
+            }
+        });
 
     }
 
