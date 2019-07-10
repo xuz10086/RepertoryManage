@@ -43,6 +43,9 @@ public class LoginActivity extends BaseActivity {
     // App更新
     private TextView updateApp, version;
 
+    // 示例服务器地址
+    private static final String EXAMPLE_URL = "36.155.115:37:8181";
+
     EditText tv;
 
     @Override
@@ -69,7 +72,7 @@ public class LoginActivity extends BaseActivity {
         tv.setText(url);
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
         builder.setTitle("请输入URL");
-        builder.setMessage("例如：10.0.0.28:8080");
+        builder.setMessage("例如：" + EXAMPLE_URL);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setView(tv);
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
