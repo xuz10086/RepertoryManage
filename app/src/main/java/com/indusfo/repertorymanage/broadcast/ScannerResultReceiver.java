@@ -39,7 +39,7 @@ public class ScannerResultReceiver extends BroadcastReceiver {
 
         if (intent.getAction().equals(AppParams.RES_ACTION)) {
             // 获取扫描结果
-            if (scanResult.length()>0) {
+            if (scanResult.length()>13) {
 //                //如果条码长度>0，解码成功。如果条码长度等于0解码失败。
 //                tvScanResult.setText(scanResult + "\n");
                 mListener.onModeChange(IdiyMessage.AFTER_SCANNING, scanResult);
@@ -48,7 +48,7 @@ public class ScannerResultReceiver extends BroadcastReceiver {
                  1，需要先将扫描失败提示接口打开只能在广播模式下使用，其他模式无法调用。
                  2，通过判断条码长度来判定是否解码成功，当长度等于0时表示解码失败。
                  * */
-                Toast.makeText(mContext, "解码失败！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "条码格式错误，解码失败！", Toast.LENGTH_SHORT).show();
             }
         }
 
