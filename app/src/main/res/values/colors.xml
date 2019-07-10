@@ -25,4 +25,8 @@
     <color name="buttonColor1">#FF4DA1FF</color>
 
     <color name="spinner">#bcd2f2</color>
+
+    <!-- EditText -->
+    <color name="edit_text_normal_color">#00FF00</color>
+    <color name="edit_text_activated_color">#FF00FF</color>
 </resources>
