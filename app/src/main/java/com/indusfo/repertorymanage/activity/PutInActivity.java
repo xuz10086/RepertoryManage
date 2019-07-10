@@ -253,6 +253,11 @@ public class PutInActivity extends BaseActivity {
     private void handleAfterScanning(Message msg) {
         String scanResult = (String) msg.obj;
 
+        if (null==lStoreId || lStoreId.isEmpty() || null==lLocationId || lLocationId.isEmpty()) {
+            tip("请先选择库房库位，再进行扫码");
+            return;
+        }
+
         // 条码不可重复
         for (ProStoreD proStoreD : proStoreDList) {
             if (scanResult.equals(proStoreD.getVcProStoreCode())) {
@@ -499,7 +504,7 @@ public class PutInActivity extends BaseActivity {
                     if (proStoreDList.size()==0 && null!=vcModel && !spq.getText().toString().isEmpty()
                             && !tiaoMa.getText().toString().isEmpty()) {
                         // 如果是第一次，则新增一行数据
-                        addRowAndUpdateUI();
+//                        addRowAndUpdateUI();
                     }
                 }
             }
@@ -608,7 +613,11 @@ public class PutInActivity extends BaseActivity {
             vcModel = outState.getString("vcModel");
             xingHao.setText(vcModel);
             spq.setText(outState.getString("spq"));
+            // 设置输入框光标到文本末尾
+            spq.setSelection(spq.getText().length());
             dingDan.setText(outState.getString("dingDan"));
+            // 设置输入框光标到文本末尾
+            dingDan.setSelection(dingDan.getText().length());
             storePostion = outState.getInt("storePostion");
             locationPostion = outState.getInt("locationPostion");
             proStoreDList = outState.getParcelableArrayList("proStoreDList");

@@ -521,6 +521,11 @@ public class TakeStockActivity extends BaseActivity {
     private void handleAfterScanning(Message msg) {
         String scanResult = (String) msg.obj;
 
+        if (null==lStoreId || lStoreId.isEmpty() || null==lLocationId || lLocationId.isEmpty()) {
+            tip("请先选择库房库位，再进行扫码");
+            return;
+        }
+
         // 条码不可重复
         for (CheckD checkD : checkDList) {
             if (scanResult.equals(checkD.getVcCheckDCode())) {
