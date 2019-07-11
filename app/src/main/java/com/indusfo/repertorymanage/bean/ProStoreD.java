@@ -17,13 +17,13 @@ public class ProStoreD implements Serializable,Parcelable {
     //条码
     private String vcProStoreCode;
     //产品id
-    private Integer lProduct;
+    private String lProduct;
     //产品型号
     private String vcModel;
     //库房id
-    private Integer lStoreId;
+    private String lStoreId;
     //库位id
-    private Integer lLocaId;
+    private String lLocaId;
     //订单号
     private String vcOrder;
     //数量
@@ -40,13 +40,22 @@ public class ProStoreD implements Serializable,Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+//        if (null==lProduct) {
+//            lProduct = -1;
+//        }
+//        if (null==lStoreId) {
+//            lStoreId = -1;
+//        }
+//        if (null==lLocaId) {
+//            lLocaId = -1;
+//        }
         // 1.必须按成员变量声明的顺序封装数据，不然会出现获取数据出错
         // 2.序列化对象
         parcel.writeString(vcProStoreCode);
-        parcel.writeInt(lProduct);
+        parcel.writeString(lProduct);
         parcel.writeString(vcModel);
-        parcel.writeInt(lStoreId);
-        parcel.writeInt(lLocaId);
+        parcel.writeString(lStoreId);
+        parcel.writeString(lLocaId);
         parcel.writeString(vcOrder);
         parcel.writeString(vcNum);
         parcel.writeString(vcStoreName);
@@ -68,10 +77,10 @@ public class ProStoreD implements Serializable,Parcelable {
             // 必须按成员变量声明的顺序读取数据，不然会出现获取数据出错
             ProStoreD p = new ProStoreD();
             p.setVcProStoreCode(source.readString());
-            p.setlProduct(source.readInt());
+            p.setlProduct(source.readString());
             p.setVcModel(source.readString());
-            p.setlStoreId(source.readInt());
-            p.setlLocaId(source.readInt());
+            p.setlStoreId(source.readString());
+            p.setlLocaId(source.readString());
             p.setVcOrder(source.readString());
             p.setVcNum(source.readString());
             p.setVcStoreName(source.readString());
@@ -94,11 +103,11 @@ public class ProStoreD implements Serializable,Parcelable {
         this.vcProStoreCode = vcProStoreCode;
     }
 
-    public Integer getlProduct() {
+    public String getlProduct() {
         return lProduct;
     }
 
-    public void setlProduct(Integer lProduct) {
+    public void setlProduct(String lProduct) {
         this.lProduct = lProduct;
     }
 
@@ -110,19 +119,19 @@ public class ProStoreD implements Serializable,Parcelable {
         this.vcModel = vcModel;
     }
 
-    public Integer getlStoreId() {
+    public String getlStoreId() {
         return lStoreId;
     }
 
-    public void setlStoreId(Integer lStoreId) {
+    public void setlStoreId(String lStoreId) {
         this.lStoreId = lStoreId;
     }
 
-    public Integer getlLocaId() {
+    public String getlLocaId() {
         return lLocaId;
     }
 
-    public void setlLocaId(Integer lLocaId) {
+    public void setlLocaId(String lLocaId) {
         this.lLocaId = lLocaId;
     }
 
@@ -154,18 +163,18 @@ public class ProStoreD implements Serializable,Parcelable {
         return vcLocaName;
     }
 
-    public void setVcLocaName(String vcLocaNam) {
-        this.vcLocaName = vcLocaNam;
+    public void setVcLocaName(String vcLocaName) {
+        this.vcLocaName = vcLocaName;
     }
 
     @Override
     public String toString() {
         return "ProStoreD{" +
                 "vcProStoreCode='" + vcProStoreCode + '\'' +
-                ", lProduct=" + lProduct +
+                ", lProduct='" + lProduct + '\'' +
                 ", vcModel='" + vcModel + '\'' +
-                ", lStoreId=" + lStoreId +
-                ", lLocaId=" + lLocaId +
+                ", lStoreId='" + lStoreId + '\'' +
+                ", lLocaId='" + lLocaId + '\'' +
                 ", vcOrder='" + vcOrder + '\'' +
                 ", vcNum='" + vcNum + '\'' +
                 ", vcStoreName='" + vcStoreName + '\'' +

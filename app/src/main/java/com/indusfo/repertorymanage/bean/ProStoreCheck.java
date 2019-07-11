@@ -14,13 +14,13 @@ import java.util.List;
 public class ProStoreCheck implements Serializable {
 
     //成品库存盘点id
-    private Integer lStoreCheck;
+    private String lStoreCheck;
     //盘点单编码
     private String vcCheckCode;
     //盘点库位id
-    private Integer lLocaId;
+    private String lLocaId;
     //盘点库房id
-    private Integer lStoreId;
+    private String lStoreId;
     //盘点人
     private Integer lCheckUser;
     //盘点时间
@@ -36,11 +36,11 @@ public class ProStoreCheck implements Serializable {
     //盘点明细
     private List<CheckD> checkDList;
 
-    public Integer getlStoreCheck() {
+    public String getlStoreCheck() {
         return lStoreCheck;
     }
 
-    public void setlStoreCheck(Integer lStoreCheck) {
+    public void setlStoreCheck(String lStoreCheck) {
         this.lStoreCheck = lStoreCheck;
     }
 
@@ -52,19 +52,19 @@ public class ProStoreCheck implements Serializable {
         this.vcCheckCode = vcCheckCode;
     }
 
-    public Integer getlLocaId() {
+    public String getlLocaId() {
         return lLocaId;
     }
 
-    public void setlLocaId(Integer lLocaId) {
+    public void setlLocaId(String lLocaId) {
         this.lLocaId = lLocaId;
     }
 
-    public Integer getlStoreId() {
+    public String getlStoreId() {
         return lStoreId;
     }
 
-    public void setlStoreId(Integer lStoreId) {
+    public void setlStoreId(String lStoreId) {
         this.lStoreId = lStoreId;
     }
 
@@ -127,10 +127,10 @@ public class ProStoreCheck implements Serializable {
     @Override
     public String toString() {
         return "ProStoreCheck{" +
-                "lStoreCheck=" + lStoreCheck +
+                "lStoreCheck='" + lStoreCheck + '\'' +
                 ", vcCheckCode='" + vcCheckCode + '\'' +
-                ", lLocaId=" + lLocaId +
-                ", lStoreId=" + lStoreId +
+                ", lLocaId='" + lLocaId + '\'' +
+                ", lStoreId='" + lStoreId + '\'' +
                 ", lCheckUser=" + lCheckUser +
                 ", dCheckTime='" + dCheckTime + '\'' +
                 ", lCheckOver=" + lCheckOver +

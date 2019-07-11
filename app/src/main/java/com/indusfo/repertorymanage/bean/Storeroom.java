@@ -16,7 +16,7 @@ public class Storeroom implements Serializable {
     /**
      * x库房id
      */
-    private Integer lStoreId;
+    private String lStoreId;
 
     /**
      * x库房编号
@@ -30,11 +30,11 @@ public class Storeroom implements Serializable {
 
     private List<Location> listLocation;
 
-    public Integer getlStoreId() {
+    public String getlStoreId() {
         return lStoreId;
     }
 
-    public void setlStoreId(Integer lStoreId) {
+    public void setlStoreId(String lStoreId) {
         this.lStoreId = lStoreId;
     }
 
@@ -65,7 +65,7 @@ public class Storeroom implements Serializable {
     @Override
     public String toString() {
         return "Storeroom{" +
-                "lStoreId=" + lStoreId +
+                "lStoreId='" + lStoreId + '\'' +
                 ", vcStoreCode='" + vcStoreCode + '\'' +
                 ", vcStoreName='" + vcStoreName + '\'' +
                 ", listLocation=" + listLocation +

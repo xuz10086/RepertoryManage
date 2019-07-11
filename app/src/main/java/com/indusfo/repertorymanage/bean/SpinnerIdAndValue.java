@@ -10,19 +10,19 @@ package com.indusfo.repertorymanage.bean;
  * @return
  */
 public class SpinnerIdAndValue {
-    private Integer id;
+    private String id;
     private String value;
 
-    public SpinnerIdAndValue(Integer id, String value) {
+    public SpinnerIdAndValue(String id, String value) {
         this.id = id;
         this.value = value;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

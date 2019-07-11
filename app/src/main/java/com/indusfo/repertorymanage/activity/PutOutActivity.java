@@ -80,14 +80,14 @@ public class PutOutActivity extends BaseActivity {
     List<Storeroom> storeroomList = new ArrayList<>();
     List<Location> locationList = new ArrayList<>();
     // 产品
-    Integer lProduct;
+    String lProduct = "";
     String vcModel = "";
     // 库房
     Integer lStoreId;
     String vcStoreName = "";
     int storePostion;
     // 库位
-    Integer lLocationId;
+//    String lLocationId = "";
     String vcLocationName = "";
     int locationPostion;
 
@@ -411,7 +411,7 @@ public class PutOutActivity extends BaseActivity {
         // 封装Spinner列表集合
         final List<SpinnerIdAndValue> spinnerIdAndValueList1 = new ArrayList<>();
         for (Storeroom storeroom : storeroomList) {
-            Integer storeId = storeroom.getlStoreId();
+            String storeId = storeroom.getlStoreId();
             String vcStoreName = storeroom.getVcStoreName();
             // 现在只有成品库
             if (vcStoreName.equals("成品库")) {
@@ -443,8 +443,8 @@ public class PutOutActivity extends BaseActivity {
                 lStoreId = spinnerIdAndValueList1.get(postion).getId();
 
                 // 给库位设置ID
-                if (null != lStoreId) {
-                    kuFang2.setId(lStoreId);
+                if (null != lStoreId && !lStoreId.isEmpty()) {
+                    kuFang2.setId(Integer.valueOf(lStoreId));
                 }
 
                 // 选择库房后，可以确定出库位
@@ -476,7 +476,7 @@ public class PutOutActivity extends BaseActivity {
         SpinnerIdAndValue spinnerIdAndValue2 = new SpinnerIdAndValue(null, "请选择");
         spinnerIdAndValueList2.add(spinnerIdAndValue2);
         for (Location location : locationList) {
-            Integer locaId = location.getlLocaId();
+            String locaId = location.getlLocaId();
             String vcLocaName = location.getVcLocaName();
 
             SpinnerIdAndValue spinnerIdAndValue = new SpinnerIdAndValue(locaId, vcLocaName);
@@ -500,8 +500,8 @@ public class PutOutActivity extends BaseActivity {
                 lLocationId = spinnerIdAndValueList2.get(postion).getId();
 
                 // 给库位设置ID
-                if (null != lLocationId) {
-                    kuWei2.setId(lLocationId);
+                if (null != lLocationId && !lLocationId.isEmpty()) {
+                    kuWei2.setId(Integer.valueOf(lLocationId));
                     // 没有明细时，在选择库位后，数据完整的情况下自动新增一行明细
                     if (proStoreDList.size()==0 && null!=vcModel && !spq.getText().toString().isEmpty()
                             && !tiaoMa.getText().toString().isEmpty()) {
@@ -646,7 +646,7 @@ public class PutOutActivity extends BaseActivity {
                 Bundle bundle = data.getExtras();
                 String str = bundle.getString("lProduct");
                 if (null != str && !str.isEmpty()) {
-                    lProduct = Integer.valueOf(str);
+                    lProduct = str;
                 }
                 vcModel = bundle.getString("vcModel");
                 xingHao.setText(vcModel);
@@ -871,7 +871,7 @@ public class PutOutActivity extends BaseActivity {
         outState = new Bundle();
 
         if (null!=lProduct) {
-            outState.putInt("lProduct", lProduct);
+            outState.putString("lProduct", lProduct);
         }
         outState.putString("vcModel", vcModel);
         outState.putString("tiaoMa", tiaoMa.getText().toString());

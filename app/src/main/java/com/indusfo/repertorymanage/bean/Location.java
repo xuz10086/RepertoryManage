@@ -14,7 +14,7 @@ public class Location implements Serializable {
     /**
      * x库位id
      */
-    private Integer lLocaId;
+    private String lLocaId;
 
     /**
      * x库位名称
@@ -29,13 +29,13 @@ public class Location implements Serializable {
     /**
      * x库房ID
      */
-    private Integer lStoreId;
+    private String lStoreId;
 
-    public Integer getlLocaId() {
+    public String getlLocaId() {
         return lLocaId;
     }
 
-    public void setlLocaId(Integer lLocaId) {
+    public void setlLocaId(String lLocaId) {
         this.lLocaId = lLocaId;
     }
 
@@ -55,21 +55,21 @@ public class Location implements Serializable {
         this.vcLocaCode = vcLocaCode;
     }
 
-    public Integer getlStoreId() {
+    public String getlStoreId() {
         return lStoreId;
     }
 
-    public void setlStoreId(Integer lStoreId) {
+    public void setlStoreId(String lStoreId) {
         this.lStoreId = lStoreId;
     }
 
     @Override
     public String toString() {
         return "Location{" +
-                "lLocaId=" + lLocaId +
+                "lLocaId='" + lLocaId + '\'' +
                 ", vcLocaName='" + vcLocaName + '\'' +
                 ", vcLocaCode='" + vcLocaCode + '\'' +
-                ", lStoreId=" + lStoreId +
+                ", lStoreId='" + lStoreId + '\'' +
                 '}';
     }
 }

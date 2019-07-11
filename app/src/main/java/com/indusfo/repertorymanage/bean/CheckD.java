@@ -15,9 +15,9 @@ import java.io.Serializable;
  */
 public class CheckD implements Serializable,Parcelable {
     //盘点明细id
-    private Integer lCheckD;
+    private String lCheckD;
     //盘点单id
-    private Integer lStoreCheck;
+    private String lStoreCheck;
     //批号
     private String vcCheckDCode;
     //产品id
@@ -25,11 +25,11 @@ public class CheckD implements Serializable,Parcelable {
     //产品型号
     private String vcModel;
     //库房id
-    private Integer lStoreId;
+    private String lStoreId;
     //盘点库位id
-    private Integer lCheckLoca;
+    private String lCheckLoca;
     //实际库位
-    private Integer lReallyLoca;
+    private String lReallyLoca;
     //数量
     private String vcNum;
     //是否正常
@@ -54,14 +54,14 @@ public class CheckD implements Serializable,Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         // 1.必须按成员变量声明的顺序封装数据，不然会出现获取数据出错
         // 2.序列化对象
-        parcel.writeInt(lCheckD);
-        parcel.writeInt(lStoreCheck);
+        parcel.writeString(lCheckD);
+        parcel.writeString(lStoreCheck);
         parcel.writeString(vcCheckDCode);
         parcel.writeString(lProduct);
         parcel.writeString(vcModel);
-        parcel.writeInt(lStoreId);
-        parcel.writeInt(lCheckLoca);
-        parcel.writeInt(lReallyLoca);
+        parcel.writeString(lStoreId);
+        parcel.writeString(lCheckLoca);
+        parcel.writeString(lReallyLoca);
         parcel.writeString(vcNum);
         parcel.writeInt(lNormal);
         parcel.writeInt(lMoveUser);
@@ -85,14 +85,14 @@ public class CheckD implements Serializable,Parcelable {
             // TODO Auto-generated method stub
             // 必须按成员变量声明的顺序读取数据，不然会出现获取数据出错
             CheckD p = new CheckD();
-            p.setlCheckD(source.readInt());
-            p.setlStoreCheck(source.readInt());
+            p.setlCheckD(source.readString());
+            p.setlStoreCheck(source.readString());
             p.setVcCheckDCode(source.readString());
             p.setlProduct(source.readString());
             p.setVcModel(source.readString());
-            p.setlStoreId(source.readInt());
-            p.setlCheckLoca(source.readInt());
-            p.setlReallyLoca(source.readInt());
+            p.setlStoreId(source.readString());
+            p.setlCheckLoca(source.readString());
+            p.setlReallyLoca(source.readString());
             p.setVcNum(source.readString());
             p.setlNormal(source.readInt());
             p.setlMoveUser(source.readInt());
@@ -110,19 +110,19 @@ public class CheckD implements Serializable,Parcelable {
         }
     };
 
-    public Integer getlCheckD() {
+    public String getlCheckD() {
         return lCheckD;
     }
 
-    public void setlCheckD(Integer lCheckD) {
+    public void setlCheckD(String lCheckD) {
         this.lCheckD = lCheckD;
     }
 
-    public Integer getlStoreCheck() {
+    public String getlStoreCheck() {
         return lStoreCheck;
     }
 
-    public void setlStoreCheck(Integer lStoreCheck) {
+    public void setlStoreCheck(String lStoreCheck) {
         this.lStoreCheck = lStoreCheck;
     }
 
@@ -150,27 +150,27 @@ public class CheckD implements Serializable,Parcelable {
         this.vcModel = vcModel;
     }
 
-    public Integer getlStoreId() {
+    public String getlStoreId() {
         return lStoreId;
     }
 
-    public void setlStoreId(Integer lStoreId) {
+    public void setlStoreId(String lStoreId) {
         this.lStoreId = lStoreId;
     }
 
-    public Integer getlCheckLoca() {
+    public String getlCheckLoca() {
         return lCheckLoca;
     }
 
-    public void setlCheckLoca(Integer lCheckLoca) {
+    public void setlCheckLoca(String lCheckLoca) {
         this.lCheckLoca = lCheckLoca;
     }
 
-    public Integer getlReallyLoca() {
+    public String getlReallyLoca() {
         return lReallyLoca;
     }
 
-    public void setlReallyLoca(Integer lReallyLoca) {
+    public void setlReallyLoca(String lReallyLoca) {
         this.lReallyLoca = lReallyLoca;
     }
 
@@ -233,14 +233,14 @@ public class CheckD implements Serializable,Parcelable {
     @Override
     public String toString() {
         return "CheckD{" +
-                "lCheckD=" + lCheckD +
-                ", lStoreCheck=" + lStoreCheck +
+                "lCheckD='" + lCheckD + '\'' +
+                ", lStoreCheck='" + lStoreCheck + '\'' +
                 ", vcCheckDCode='" + vcCheckDCode + '\'' +
                 ", lProduct='" + lProduct + '\'' +
                 ", vcModel='" + vcModel + '\'' +
-                ", lStoreId=" + lStoreId +
-                ", lCheckLoca=" + lCheckLoca +
-                ", lReallyLoca=" + lReallyLoca +
+                ", lStoreId='" + lStoreId + '\'' +
+                ", lCheckLoca='" + lCheckLoca + '\'' +
+                ", lReallyLoca='" + lReallyLoca + '\'' +
                 ", vcNum='" + vcNum + '\'' +
                 ", lNormal=" + lNormal +
                 ", lMoveUser=" + lMoveUser +

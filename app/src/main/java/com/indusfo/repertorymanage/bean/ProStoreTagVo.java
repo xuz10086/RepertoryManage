@@ -12,11 +12,11 @@ import java.io.Serializable;
  */
 public class ProStoreTagVo implements Serializable {
     //主键id
-    private Integer lProStoreTag;
+    private String lProStoreTag;
     //批号
     private String vcProStoreCode;
     //产品id
-    private Integer lProduct;
+    private String lProduct;
     //产品型号  页面
     private String vcModel;
     //每箱数量 spq
@@ -30,11 +30,11 @@ public class ProStoreTagVo implements Serializable {
     //出入库标志
     private Integer lStoreMark;
 
-    public Integer getlProStoreTag() {
+    public String getlProStoreTag() {
         return lProStoreTag;
     }
 
-    public void setlProStoreTag(Integer lProStoreTag) {
+    public void setlProStoreTag(String lProStoreTag) {
         this.lProStoreTag = lProStoreTag;
     }
 
@@ -46,11 +46,11 @@ public class ProStoreTagVo implements Serializable {
         this.vcProStoreCode = vcProStoreCode;
     }
 
-    public Integer getlProduct() {
+    public String getlProduct() {
         return lProduct;
     }
 
-    public void setlProduct(Integer lProduct) {
+    public void setlProduct(String lProduct) {
         this.lProduct = lProduct;
     }
 
@@ -102,18 +102,27 @@ public class ProStoreTagVo implements Serializable {
         this.lStoreMark = lStoreMark;
     }
 
+    public String getVcTagCode() {
+        return vcTagCode;
+    }
+
+    public void setVcTagCode(String vcTagCode) {
+        this.vcTagCode = vcTagCode;
+    }
+
     @Override
     public String toString() {
         return "ProStoreTagVo{" +
-                "lProStoreTag=" + lProStoreTag +
+                "lProStoreTag='" + lProStoreTag + '\'' +
                 ", vcProStoreCode='" + vcProStoreCode + '\'' +
-                ", lProduct=" + lProduct +
+                ", lProduct='" + lProduct + '\'' +
                 ", vcModel='" + vcModel + '\'' +
                 ", vcNum=" + vcNum +
                 ", vcOrder='" + vcOrder + '\'' +
                 ", vcStoreName='" + vcStoreName + '\'' +
                 ", vcLocaName='" + vcLocaName + '\'' +
                 ", lStoreMark=" + lStoreMark +
+                ", vcTagCode='" + vcTagCode + '\'' +
                 '}';
     }
 }

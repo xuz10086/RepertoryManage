@@ -62,18 +62,18 @@ public class TakeStockActivity extends BaseActivity {
     // 批号
     String vcPiHao;
     // 产品
-    Integer lProduct;
+    String lProduct = "";
     String vcModel = "";
     // 库房
-    Integer lStoreId;
+    String lStoreId = "";
     String vcStoreName = "";
     int storePostion;
     // 库位
-    Integer lLocationId;
+    String lLocationId = "";
     String vcLocationName = "";
     int locationPostion;
     // 实际库位ID
-    Integer lLocationRealId;
+    String lLocationRealId = "";
     String vcLocationRealName = "";
     // 数量
     String vcNum = "";
@@ -615,7 +615,7 @@ public class TakeStockActivity extends BaseActivity {
         // 封装Spinner列表集合
         final List<SpinnerIdAndValue> spinnerIdAndValueList1 = new ArrayList<>();
         for (Storeroom storeroom : storeroomList) {
-            Integer storeId = storeroom.getlStoreId();
+            String storeId = storeroom.getlStoreId();
             String vcStoreName = storeroom.getVcStoreName();
             // 现在只有成品库
             if (vcStoreName.equals("成品库")) {
@@ -646,8 +646,8 @@ public class TakeStockActivity extends BaseActivity {
                 lStoreId = spinnerIdAndValueList1.get(postion).getId();
 
                 // 给库位设置ID
-                if (null != lStoreId) {
-                    kuFang.setId(lStoreId);
+                if (null != lStoreId && !lStoreId.isEmpty()) {
+                    kuFang.setId(Integer.valueOf(lStoreId));
                 }
 
                 // 选择库房后，可以确定出库位
@@ -679,7 +679,7 @@ public class TakeStockActivity extends BaseActivity {
         SpinnerIdAndValue spinnerIdAndValue2 = new SpinnerIdAndValue(null, "请选择");
         spinnerIdAndValueList2.add(spinnerIdAndValue2);
         for (Location location : locationList) {
-            Integer locaId = location.getlLocaId();
+            String locaId = location.getlLocaId();
             String vcLocaName = location.getVcLocaName();
 
             SpinnerIdAndValue spinnerIdAndValue = new SpinnerIdAndValue(locaId, vcLocaName);
@@ -703,8 +703,8 @@ public class TakeStockActivity extends BaseActivity {
                 lLocationId = spinnerIdAndValueList2.get(postion).getId();
 
                 // 给库位设置ID
-                if (null != lLocationId) {
-                    kuWei.setId(lLocationId);
+                if (null != lLocationId && !lLocationId.isEmpty()) {
+                    kuWei.setId(Integer.valueOf(lLocationId));
                 }
             }
 
@@ -764,12 +764,12 @@ public class TakeStockActivity extends BaseActivity {
         if (outState != null) {
             vcPiHao = outState.getString("piHao");
             piHao.setText(vcPiHao);
-            lProduct = outState.getInt("lProduct");
+            lProduct = outState.getString("lProduct");
             vcModel = outState.getString("vcModel");
             xingHao.setText(vcModel);
             vcNum = outState.getString("spq");
             spq.setText(vcNum);
-            lLocationId = outState.getInt("lLocationRealId");
+            lLocationId = outState.getString("lLocationRealId");
             vcLocationRealName = outState.getString("vcLocationRealName");
             kuWeiReal.setText(vcLocationRealName);
             storePostion = outState.getInt("storePostion");
@@ -852,11 +852,11 @@ public class TakeStockActivity extends BaseActivity {
         outState = new Bundle();
 
         if (null!=lProduct) {
-            outState.putInt("lProduct", lProduct);
+            outState.putString("lProduct", lProduct);
         }
         outState.putString("piHao", piHao.getText().toString());
         if (null!=lLocationRealId) {
-            outState.putInt("lLocationRealId",lLocationRealId);
+            outState.putString("lLocationRealId",lLocationRealId);
         }
         outState.putString("vcLocationRealName",vcLocationRealName);
         outState.putString("vcModel", vcModel);
